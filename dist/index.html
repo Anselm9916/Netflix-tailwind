@@ -4,11 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="output.css">
     <!-- npm run dev -->
 </head>
-<body>
-    <h1 class="bg-blue-400">Hello Tailwind</h1>
+ <body class="relative h-screen"> 
+      
+        <div class="absolute inset-0 bg-no-repeat bg-center z-0" style="background-image: url('goeie.jpg'); background-size: cover;">
+    </div>
+
+    <div class="relative z-10 flex items-center justify-between p-5 ml-7">
+        <!-- Left Side -->
+        <div class="flex space-x-4">
+            <img src="pop.png" alt="logo" class="h-7 w-13 mr-5">
+            <h1 class="text-white font-bold">Homepagina</h1>
+            <h1 class="text-gray-200">Series</h1>  
+            <h1 class="text-gray-200">Films</h1>
+            <h1 class="text-gray-200">Nieuw en populair</h1>
+            <h1 class="text-gray-200">Mijn lijst</h1>
+            <h1 class="text-gray-200">Bladeren door talen</h1>
+        </div>
+    
+        <!-- Right Side -->
+        <div class="flex space-x-4">
+            <i class='bx bx-search text-white text-2xl'></i>
+            <h1 class="text-white">Kids</h1>
+            <h1 class="text-white">Account</h1>
+            
+
+        </div>
+    </div>
     
 </body>
 </html>

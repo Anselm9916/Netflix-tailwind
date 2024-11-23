@@ -1,33 +1,57 @@
-const imageUrls = [
-    './fotos/po.jpg',
-    './fotos/card2.jpg',
-    './fotos/card3.jpg',
-    './fotos/card4.jpg',
-    './fotos/card5.jpg',
-    './fotos/card6.jpg',
-];
+// Data for each category
+const categories = {
+    Thriller: [
+        './fotos/thriller1.jpg',
+        './fotos/thriller2.jpg',
+        './fotos/thriller3.jpg',
+    ],
+    Comedy: [
+        './fotos/comedy1.jpg',
+        './fotos/comedy2.jpg',
+        './fotos/comedy3.jpg',
+        './fotos/comedy4.jpg',
+    ],
+};
 
 // Get the container element
-const cardsContainer = document.getElementById('cards-container');
+const mainContainer = document.getElementById('cards-container');
 
-// Check if the container exists
-if (cardsContainer) {
-    // Loop through the image URLs and create cards
-    imageUrls.forEach((url) => {
-        // Create card container with specified size
-        const card = document.createElement('div');
-        card.className = 'bg-gray-800 rounded-lg overflow-hidden shadow-md w-[250px] h-[150px]'; // Set fixed width and height
+// Check if the main container exists
+if (mainContainer) {
+    // Loop through each category
+    Object.entries(categories).forEach(([categoryName, imageUrls]) => {
+        // Create a section for the category
+        const categorySection = document.createElement('div');
+        categorySection.className = 'mb-10';
 
-        // Add the image
-        const img = document.createElement('img');
-        img.src = url;
-        img.alt = 'Card Image';
-        img.className = 'w-full h-full object-cover rounded-lg'; // Ensure the image fills the entire card
+        // Add a title for the category
+        const categoryTitle = document.createElement('h2');
+        categoryTitle.textContent = categoryName;
+        categoryTitle.className = 'text-white text-lg font-bold mb-4 text-2xl';
+        categorySection.appendChild(categoryTitle);
 
-        // Append the image to the card and the card to the container
-        card.appendChild(img);
-        cardsContainer.appendChild(card);
+        // Create a container for the cards
+        const rowContainer = document.createElement('div');
+        rowContainer.className = 'flex gap-4 overflow-x-auto pb-4'; // Horizontal scrolling if needed
+
+        // Add cards for each image
+        imageUrls.forEach((url) => {
+            const card = document.createElement('div');
+            card.className = 'bg-gray-800 rounded-lg overflow-hidden shadow-md w-[230px] h-[130px]';
+
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = `${categoryName} Image`;
+            img.className = 'w-full h-full object-cover';
+
+            card.appendChild(img);
+            rowContainer.appendChild(card);
+        });
+
+        // Append the row to the section and the section to the main container
+        categorySection.appendChild(rowContainer);
+        mainContainer.appendChild(categorySection);
     });
 } else {
-    console.error('Cards container not found. Make sure the element with id="cards-container" exists.');
+    console.error('Main container not found. Make sure the element with id="cards-container" exists.');
 }
